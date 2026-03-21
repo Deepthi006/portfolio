@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepthi Desetty | AI/ML Engineer</title>
+  <meta name="description" content="AI/ML Engineer specializing in Deep Learning, NLP, and Data Science. Portfolio of Deepthi Desetty.">
+  <link rel="stylesheet" href="/static/style.css?v=18">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Three.js for 3D hero -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- Particles.js for background -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  
+  <!-- Falling Matrix Text Background -->
+  <canvas id="matrix-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.22;"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <header id="navbar">
+    <nav>
+      <a href="#" class="logo">
+        <span class="logo-bracket">&lt;</span>DD<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about"        class="nav-link">About</a></li>
+        <li><a href="#skills"       class="nav-link">Skills</a></li>
+        <li><a href="#internship"   class="nav-link">Internship</a></li>
+        <li><a href="#projects"     class="nav-link">Projects</a></li>
+        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#training"     class="nav-link">Training</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#nss"          class="nav-link">NSS</a></li>
+        <li><a href="#education"    class="nav-link">Education</a></li>
+        <li><a href="#contact"      class="nav-link nav-cta">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#about"        class="mobile-link">About</a></li>
+      <li><a href="#skills"       class="mobile-link">Skills</a></li>
+      <li><a href="#internship"   class="mobile-link">Internship</a></li>
+      <li><a href="#projects"     class="mobile-link">Projects</a></li>
+      <li><a href="#certificates" class="mobile-link">Certificates</a></li>
+      <li><a href="#training"     class="mobile-link">Training</a></li>
+      <li><a href="#achievements" class="mobile-link">Achievements</a></li>
+      <li><a href="#nss"          class="mobile-link">NSS</a></li>
+      <li><a href="#education"    class="mobile-link">Education</a></li>
+      <li><a href="#contact"      class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        Open to opportunities
+      </div>
+      <h1 class="hero-name reveal-up">
+        Deepthi<br><span class="name-highlight">Desetty</span>
+      </h1>
+      <div class="hero-roles reveal-up">
+        <span class="role-static">I build </span>
+        <span class="role-typed" id="typedText"></span>
+        <span class="cursor-blink">|</span>
+      </div>
+      <p class="hero-desc reveal-up">
+        AI/ML Engineer crafting intelligent systems through deep learning,
+        natural language processing, and data-driven solutions.
+      </p>
+      <div class="hero-actions reveal-up">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
+      </div>
+      <div class="hero-socials reveal-up">
+        <a href="mailto:deepthidesetty22@gmail.com" class="social-pill">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://github.com/Deepthi006" target="_blank" class="social-pill">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/in/deepthi99" target="_blank" class="social-pill">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual profile-hero-wrap">
+      <!-- THREE.JS 3D CANVAS -->
+      <canvas id="hero-3d-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+      <div class="orbit-ring ring-1"></div>
+      <div class="orbit-ring ring-2"></div>
+      <div class="orbit-ring ring-3"></div>
+      
+      <div class="hero-oval-container">
+        <div class="oval-glow-ring ring-a"></div>
+        <div class="oval-glow-ring ring-b"></div>
+        <div class="profile-oval">
+          <img src="/static/profile.jpeg" alt="Deepthi Desetty" class="profile-img" id="profileImg"
+               onerror="this.style.display='none';document.getElementById('profileFallback').style.display='flex'">
+          <div class="profile-fallback" id="profileFallback">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+          <span class="oval-particle p1"></span>
+          <span class="oval-particle p2"></span>
+          <span class="oval-particle p3"></span>
+          <span class="oval-particle p4"></span>
+        </div>
+        <div class="profile-badge">
+          <div class="badge-inner"><i class="fas fa-brain"></i><span>AI/ML Engineer</span></div>
+          <div class="badge-sub">Aspiring · Open to Opportunities</div>
+        </div>
+      </div>
+      <div class="float-tag ft-1"><i class="fab fa-python"></i> Python</div>
+      <div class="float-tag ft-2"><i class="fas fa-brain"></i> Deep Learning</div>
+      <div class="float-tag ft-3"><i class="fas fa-language"></i> NLP</div>
+      <div class="float-tag ft-4"><i class="fas fa-chart-line"></i> ML</div>
+      <div class="float-tag ft-5"><i class="fas fa-database"></i> Data Science</div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">01. About</span>
+        <h2 class="section-title">The Story So Far</h2>
+        <p class="section-sub">A curious mind, a keyboard, and an endless passion for intelligence.</p>
+      </div>
+      <div class="about-grid-3">
+        <div class="about-text reveal-left">
+          <p>
+            I'm an <strong>AI/ML enthusiast</strong> specializing in deep learning, natural language
+            processing, and machine learning model development. My passion lies in building
+            intelligent systems that solve real-world problems.
+          </p>
+          <p>
+            Experienced in developing end-to-end ML pipelines using <strong>TensorFlow</strong>,
+            <strong>PyTorch</strong>, <strong>Scikit-learn</strong>, and <strong>Python</strong>,
+            with strong foundations in data preprocessing, feature engineering, and model deployment.
+          </p>
+          <div class="about-stats">
+            <div class="stat-box">
+              <span class="stat-num">250</span><span class="stat-plus">+</span>
+              <span class="stat-label">DSA Problems</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">5</span><span class="stat-plus">+</span>
+              <span class="stat-label">AI Projects</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">7.4</span>
+              <span class="stat-label">CGPA @ LPU</span>
+            </div>
+          </div>
+          <!-- Download Resume -->
+          <div class="resume-download-wrap">
+            <a href="/static/resume.pdf" download="Deepthi_Desetty_CV.pdf" target="_blank" class="btn btn-resume" id="resumeBtn">
+              <i class="fas fa-file-arrow-down"></i> Download Resume
+              <span class="resume-pulse"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Center: Code Terminal -->
+        <div class="about-terminal reveal-up">
+          <div class="code-terminal">
+            <div class="terminal-bar">
+              <span class="tb-dot tb-red"></span>
+              <span class="tb-dot tb-yellow"></span>
+              <span class="tb-dot tb-green"></span>
+              <span class="tb-title">deepthi.py</span>
+            </div>
+            <div class="terminal-body" id="codeTerminal"></div>
+          </div>
+          <div class="info-card surface-card" style="margin-top:16px;">
+            <div class="info-row"><i class="fas fa-graduation-cap"></i>
+              <div><span class="info-label">Degree</span><span class="info-value">B.Tech CSE – LPU</span></div>
+            </div>
+            <div class="info-row"><i class="fas fa-map-marker-alt"></i>
+              <div><span class="info-label">Location</span><span class="info-value">India</span></div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section skills-section" style="background: transparent;">
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="section-header reveal-up">
+        <span class="section-label">02. Skills</span>
+        <h2 class="section-title" style="color:#fff;">Where Do I Belong?</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.65);">Every tool I've mastered — built through projects, certs &amp; relentless practice.</p>
+      </div>
+      <!-- SKILL TABS -->
+      <div class="skill-tabs reveal-right" style="display:flex; gap:15px; justify-content:center; margin-bottom:30px;">
+        <button class="skill-tab-btn active" data-tab="technical">Technical Skills</button>
+        <button class="skill-tab-btn" data-tab="soft">Soft Skills</button>
+      </div>
+
+      <!-- TECHNICAL SKILLS PANEL -->
+      <div class="skill-tab-panel active reveal-left" id="tab-technical">
+        <div class="skills-bento">
+          
+          <!-- Category: Languages -->
+          <div class="bento-card bento-wide" style="--bg:rgba(99,102,241,0.05); --border:rgba(99,102,241,0.2)">
+            <div class="bento-header">
+              <i class="fas fa-code" style="color:#818cf8"></i> <h3>Languages</h3>
+            </div>
+            <div class="bento-items">
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><span>Python</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><span>C / C++</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><span>Java</span></div>
+              <div class="b-item"><i class="fas fa-database" style="color:#336791; font-size:1.5rem"></i><span>SQL</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML/CSS"><span>HTML/CSS</span></div>
+            </div>
+          </div>
+
+          <!-- Category: AI/ML & Libraries — WIDE -->
+          <div class="bento-card bento-wide" style="--bg:rgba(236,72,153,0.05); --border:rgba(236,72,153,0.2)">
+            <div class="bento-header">
+              <i class="fas fa-brain" style="color:#f472b6"></i> <h3>AI / ML &amp; Libraries</h3>
+            </div>
+            <div class="bento-items">
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"><span>TensorFlow</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"><span>PyTorch</span></div>
+              <div class="b-item"><i class="fas fa-robot" style="color:#f7931e;font-size:1.4rem"></i><span>Scikit-learn</span></div>
+              <div class="b-item"><i class="fas fa-language" style="color:#1976d2;font-size:1.4rem"></i><span>NLP / BERT</span></div>
+              <div class="b-item"><i class="fas fa-network-wired" style="color:#4caf50;font-size:1.4rem"></i><span>Deep Learning</span></div>
+              <div class="b-item"><i class="fas fa-microchip" style="color:#7c3aed;font-size:1.4rem"></i><span>LLMs / GenAI</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"><span>Pandas</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"><span>NumPy</span></div>
+              <div class="b-item"><i class="fas fa-chart-area" style="color:#11557c;font-size:1.4rem"></i><span>Matplotlib</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"><span>Django</span></div>
+            </div>
+          </div>
+
+          <!-- Category: Tools & Cloud — WIDE -->
+          <div class="bento-card bento-wide" style="--bg:rgba(6,214,250,0.05); --border:rgba(6,214,250,0.2)">
+            <div class="bento-header">
+              <i class="fas fa-tools" style="color:#06d6fa"></i> <h3>Tools &amp; Cloud</h3>
+            </div>
+            <div class="bento-items">
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter"><span>Jupyter</span></div>
+              <div class="b-item"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg" alt="Colab"><span>Colab</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"><span>VS Code</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><span>Docker</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"><span>AWS</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"><span>MongoDB</span></div>
+              <div class="b-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"><span>MySQL</span></div>
+              <div class="b-item"><i class="fas fa-exchange-alt" style="color:#2e73b8;font-size:1.4rem"></i><span>REST APIs</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SOFT SKILLS PANEL -->
+      <div class="skill-tab-panel reveal-right" id="tab-soft">
+        <div class="skills-bento soft-skills" style="max-width:800px; margin:0 auto; display:block;">
+          <!-- Category: Soft Skills (Moved to its own tab) -->
+          <div class="bento-card bento-wide" style="--bg:rgba(244,114,182,0.05); --border:rgba(244,114,182,0.2)">
+            <div class="bento-header">
+              <i class="fas fa-lightbulb" style="color:#f472b6"></i> <h3>Soft Skills</h3>
+            </div>
+            <div class="bento-items">
+              <div class="b-item"><i class="fas fa-comments" style="color:#f472b6;font-size:1.3rem"></i><span>Communication</span></div>
+              <div class="b-item"><i class="fas fa-users" style="color:#a78bfa;font-size:1.3rem"></i><span>Teamwork</span></div>
+              <div class="b-item"><i class="fas fa-puzzle-piece" style="color:#34d399;font-size:1.3rem"></i><span>Problem Solving</span></div>
+              <div class="b-item"><i class="fas fa-clock" style="color:#fbbf24;font-size:1.3rem"></i><span>Time Management</span></div>
+              <div class="b-item"><i class="fas fa-sync-alt" style="color:#06d6fa;font-size:1.3rem"></i><span>Adaptability</span></div>
+              <div class="b-item"><i class="fas fa-user-tie" style="color:#fb923c;font-size:1.3rem"></i><span>Leadership</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERNSHIP ===== -->
+  <section id="internship" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">03. Internship</span>
+        <h2 class="section-title">Battle-Tested</h2>
+        <p class="section-sub">Real grit. Real code. Real deadlines.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal-left" style="--delay:0s">
+          <div class="timeline-marker"><i class="fas fa-briefcase"></i></div>
+          <div class="timeline-card surface-card levitate" style="animation-delay:0.1s; animation-duration:14s;">
+            <img src="/static/images/internship3.png" alt="SWE Internship" class="card-img">
+            <div class="timeline-header">
+              <h3>C, C++ with DSA Advanced Program</h3>
+              <span class="company-badge intern-badge">Internselite Pvt Ltd</span>
+            </div>
+            <span class="timeline-date"><i class="far fa-calendar"></i> Oct 2024 – Dec 2024</span>
+            <ul class="timeline-list">
+              <li>Developed serverless applications using <strong>AWS API Gateway</strong>, <strong>Lambda</strong>, and <strong>DynamoDB</strong>, following best practices for scalability and cost-effectiveness.</li>
+              <li>Implemented and optimized core data structures and algorithms, including <strong>trees, graphs, heaps</strong>, and <strong>dynamic programming</strong>, ensuring high-performance computing solutions.</li>
+              <li>Developed end-to-end projects applying <strong>time and space complexity analysis</strong>, leveraging STL and advanced C++ features to build efficient and scalable applications.</li>
+            </ul>
+            <div class="exp-tags">
+              <span>C / C++</span>
+              <span>DSA</span>
+              <span>AWS Lambda</span>
+              <span>DynamoDB</span>
+              <span>API Gateway</span>
+              <span>STL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">04. Projects</span>
+        <h2 class="section-title">Things I've Built</h2>
+        <p class="section-sub">Ideas turned into working systems — from model to deployment.</p>
+      </div>
+
+      <!-- PROJECT CAROUSEL -->
+      <div class="project-carousel-wrap reveal-up">
+        <button class="carousel-btn carousel-prev" id="projPrev" aria-label="Previous project">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="project-carousel" id="projectCarousel">
+
+          <!-- Project 1 -->
+          <div class="project-slide">
+            <div class="project-card surface-card">
+              <img src="/static/images/crop_cnn.png" alt="Crop Disease Predictor" class="card-img">
+              <div class="project-number">01</div>
+              <div class="proj-date"><i class="far fa-calendar"></i> Jan 2025 – Apr 2025</div>
+              <h3>Crop Disease Predictor</h3>
+              <p class="project-sub">Deep Learning CNN Model</p>
+              <p class="project-desc">Deep learning CNN model that classifies plant leaf images to detect crop diseases. Built using TensorFlow, OpenCV, and Python with a lightweight UI for image upload and automated prediction, helping farmers prevent yield loss.</p>
+              <div class="project-stack">
+                <span>TensorFlow</span><span>CNN</span><span>OpenCV</span><span>Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Deepthi006" target="_blank" class="proj-link">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-slide">
+            <div class="project-card surface-card">
+              <img src="/static/images/fraud_ai.png" alt="Fraud Detection System" class="card-img">
+              <div class="project-number">02</div>
+              <div class="proj-date"><i class="far fa-calendar"></i> May 2025 – Jun 2025</div>
+              <h3>Fraud Detection System</h3>
+              <p class="project-sub">ML-Based Anomaly Detection</p>
+              <p class="project-desc">Implemented Random Forest and Logistic Regression with advanced feature engineering to improve detection rates and reduce false positives. Integrated automated alerts and reporting via REST APIs enabling seamless backend communication.</p>
+              <div class="project-stack">
+                <span>Python</span><span>Random Forest</span><span>Logistic Regression</span><span>REST API</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Deepthi006" target="_blank" class="proj-link">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-slide">
+            <div class="project-card surface-card">
+              <img src="/static/images/fake_news.png" alt="Fake News Detection" class="card-img">
+              <div class="project-number">03</div>
+              <div class="proj-date"><i class="far fa-calendar"></i> Nov 2024 – Dec 2024</div>
+              <h3>Fake News Detection</h3>
+              <p class="project-sub">NLP Classification Model</p>
+              <p class="project-desc">Built an NLP-based fake news classifier using transformer models and TF-IDF vectorization. Trained on large news datasets with BERT fine-tuning for high-accuracy binary classification of credible vs. misleading information.</p>
+              <div class="project-stack">
+                <span>Python</span><span>BERT</span><span>NLP</span><span>TF-IDF</span><span>Scikit-learn</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Deepthi006" target="_blank" class="proj-link">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-slide">
+            <div class="project-card surface-card">
+              <img src="/static/images/stock_app.png" alt="Stock Prediction App" class="card-img">
+              <div class="project-number">04</div>
+              <div class="proj-date"><i class="far fa-calendar"></i> Aug 2024 – Oct 2024</div>
+              <h3>Stock Prediction App</h3>
+              <p class="project-sub">Time-Series Forecasting</p>
+              <p class="project-desc">Built a stock market prediction application combining LSTM neural networks with ARIMA statistical models for multi-horizon forecasting. Deployed with a React.js frontend and Django REST API backend for real-time predictions.</p>
+              <div class="project-stack">
+                <span>LSTM</span><span>ARIMA</span><span>React.js</span><span>Django</span><span>Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Deepthi006" target="_blank" class="proj-link">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-slide">
+            <div class="project-card surface-card">
+              <img src="/static/images/peaceful_mind.png" alt="Peaceful Mind App" class="card-img">
+              <div class="project-number">05</div>
+              <div class="proj-date"><i class="far fa-calendar"></i> Jun 2024 – Jul 2024</div>
+              <h3>Peaceful Mind App</h3>
+              <p class="project-sub">Mental Health AI Companion</p>
+              <p class="project-desc">Designed a sentiment-aware mental health companion that analyzes user journal entries using NLP to detect emotional trends, then suggests personalized guided meditation and mindfulness exercises through a conversational interface.</p>
+              <div class="project-stack">
+                <span>NLP</span><span>Sentiment Analysis</span><span>Python</span><span>Flask</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Deepthi006" target="_blank" class="proj-link">
+                  <i class="fab fa-github"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /project-carousel -->
+        <button class="carousel-btn carousel-next" id="projNext" aria-label="Next project">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div><!-- /project-carousel-wrap -->
+
+      <!-- Dots -->
+      <div class="carousel-dots" id="projDots"></div>
+
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATES ===== -->
+  <section id="certificates" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">05. Certificates</span>
+        <h2 class="section-title">Proof of Work</h2>
+        <p class="section-sub">Every cert is a chapter — a topic mastered, a skill unlocked.</p>
+      </div>
+      <div class="cert-flip-grid">
+
+        <!-- Cert 1 -->
+        <div class="cert-flip reveal-left" style="--delay:0s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-purple"><i class="fas fa-code-branch"></i></div>
+              <h3>Data Structures &amp; Algorithms</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> CipherSchools</p>
+              <span class="cert-date">Jul 2025</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-code-branch cert-back-icon ci-purple-text"></i>
+              <h4>What I Learned</h4>
+              <p>Advanced DSA: trees, graphs, heaps, dynamic programming, and competitive coding in C/C++.</p>
+              <span class="cert-back-badge">CipherSchools</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="cert-flip reveal-up" style="--delay:0.1s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-blue"><i class="fas fa-robot"></i></div>
+              <h3>Master Generative AI &amp; Tools</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> Infosys Springboard</p>
+              <span class="cert-date">Aug 2025</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-robot cert-back-icon ci-blue-text"></i>
+              <h4>What I Learned</h4>
+              <p>LLMs, prompt engineering, GenAI tools, Hugging Face, and real-world AI application development.</p>
+              <span class="cert-back-badge">Infosys Springboard</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="cert-flip reveal-right" style="--delay:0.2s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-green"><i class="fas fa-chart-line"></i></div>
+              <h3>Machine Learning Specialization</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> Coursera · Stanford</p>
+              <span class="cert-date">2025</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-chart-line cert-back-icon ci-green-text"></i>
+              <h4>What I Learned</h4>
+              <p>Supervised &amp; unsupervised learning, neural networks, boosting, SVMs, and production ML systems by Andrew Ng.</p>
+              <span class="cert-back-badge">Coursera / Stanford</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="cert-flip reveal-left" style="--delay:0.1s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-orange"><i class="fas fa-brain"></i></div>
+              <h3>Deep Learning Specialization</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> Coursera</p>
+              <span class="cert-date">2025</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-brain cert-back-icon ci-orange-text"></i>
+              <h4>What I Learned</h4>
+              <p>CNNs, RNNs, transformers, hyperparameter tuning, batch norm, and deep learning optimization techniques.</p>
+              <span class="cert-back-badge">Coursera</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 5 -->
+        <div class="cert-flip reveal-up" style="--delay:0.2s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-pink"><i class="fas fa-language"></i></div>
+              <h3>Natural Language Processing</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> Coursera / NLTK</p>
+              <span class="cert-date">2025</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-language cert-back-icon ci-pink-text"></i>
+              <h4>What I Learned</h4>
+              <p>Tokenization, POS tagging, named entity recognition, BERT fine-tuning, and transformer-based NLP pipelines.</p>
+              <span class="cert-back-badge">Coursera / NLTK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 6 -->
+        <div class="cert-flip reveal-right" style="--delay:0.3s">
+          <div class="cert-flip-inner">
+            <div class="cert-flip-front surface-card">
+              <div class="cert-icon ci-teal"><i class="fas fa-database"></i></div>
+              <h3>Python for Data Science &amp; AI</h3>
+              <p class="cert-issuer"><i class="fas fa-building"></i> Infosys</p>
+              <span class="cert-date">2024</span>
+            </div>
+            <div class="cert-flip-back">
+              <i class="fas fa-database cert-back-icon ci-teal-text"></i>
+              <h4>What I Learned</h4>
+              <p>Python fundamentals, Pandas, NumPy, Matplotlib, data wrangling, and exploratory data analysis (EDA).</p>
+              <span class="cert-back-badge">Infosys</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRAINING ===== -->
+  <section id="training" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">06. Training</span>
+        <h2 class="section-title">How I Levelled Up</h2>
+        <p class="section-sub">Structured programs that sharpened the edge.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal-left" style="--delay:0s">
+          <div class="timeline-marker"><i class="fas fa-laptop-code"></i></div>
+          <div class="timeline-card surface-card levitate" style="animation-delay:0.5s; animation-duration:15s;">
+            <img src="/static/images/dsa_training.png" alt="DSA Training" class="card-img">
+            <div class="timeline-header">
+              <h3>Data Structures &amp; Algorithms Training</h3>
+              <span class="company-badge">CipherSchools</span>
+            </div>
+            <span class="timeline-date"><i class="far fa-calendar"></i> Jun 2025 – Jul 2025</span>
+            <ul class="timeline-list">
+              <li>Acquired in-depth knowledge of advanced data structures including arrays, linked lists, stacks, queues, trees, graphs, heaps, and hash tables with real-world implementation in C/C++.</li>
+              <li>Designed and optimized algorithms for sorting, searching, recursion, greedy approaches, divide and conquer, backtracking, and dynamic programming with a focus on time and space complexity.</li>
+              <li>Solved industry-level programming problems and built efficient, scalable solutions through rigorous algorithmic analysis, competitive coding practices, and performance benchmarking.</li>
+            </ul>
+            <div class="exp-tags">
+              <span>C / C++</span>
+              <span>DSA</span>
+              <span>Algorithms</span>
+              <span>Competitive Coding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">07. Achievements</span>
+        <h2 class="section-title">The Scoreboard</h2>
+        <p class="section-sub">Numbers that tell the real story.</p>
+      </div>
+      <div class="achieve-grid">
+        <div class="achieve-card surface-card reveal-left">
+          <div class="achieve-icon"><i class="fas fa-trophy"></i></div>
+          <div class="achieve-num">250<span>+</span></div>
+          <h3>Codeforces Problems Solved</h3>
+          <p>Solved 250+ problems on platforms like <strong>LeetCode</strong> and <strong>Codeforces</strong> using <strong>C</strong> and <strong>Python</strong>, strengthening problem-solving and algorithmic thinking skills.</p>
+          <div class="achieve-platforms">
+            <span><i class="fas fa-code"></i> LeetCode</span>
+            <span><i class="fas fa-code"></i> Codeforces</span>
+          </div>
+        </div>
+        <div class="achieve-card surface-card reveal-right" style="--delay:0s">
+          <div class="achieve-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="achieve-num">5<span>+</span></div>
+          <h3>AI/ML Projects Built</h3>
+          <p>Designed and deployed end-to-end machine learning and deep learning projects tackling real-world problems across finance, agriculture, health, and media domains.</p>
+          <div class="achieve-platforms">
+            <span><i class="fab fa-github"></i> GitHub</span>
+          </div>
+        </div>
+        <div class="achieve-card surface-card reveal-right">
+          <div class="achieve-icon"><i class="fas fa-certificate"></i></div>
+          <div class="achieve-num">6<span>+</span></div>
+          <h3>Certifications Earned</h3>
+          <p>Completed multiple industry-recognized certifications in AI, machine learning, NLP, deep learning, and data structures from top platforms and universities.</p>
+          <div class="achieve-platforms">
+            <span><i class="fas fa-medal"></i> Coursera</span>
+            <span><i class="fas fa-medal"></i> Infosys</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NSS ===== -->
+  <section id="nss" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">08. Volunteering</span>
+        <h2 class="section-title">Giving Back</h2>
+        <p class="section-sub">Because growth means lifting others along the way.</p>
+      </div>
+      <div class="nss-card surface-card reveal-right" style="--delay:0s">
+        <img src="/static/images/nss_volunteer.png" alt="NSS Volunteering" class="nss-img">
+        <div class="nss-content">
+          <h3>Active NSS Volunteer – Lovely Professional University</h3>
+          <p>
+            Actively participated in the National Service Scheme (NSS) at LPU, engaging in a wide range of
+            community development and social outreach programs. Contributed to campaigns promoting public health,
+            sanitation, environmental sustainability, and digital literacy in local communities.
+          </p>
+          <p>
+            Took part in special NSS camps focused on rural development, tree plantation drives, blood donation
+            awareness, and education support for underprivileged youth. Developed strong leadership, teamwork,
+            and empathy through grassroots-level service initiatives.
+          </p>
+          <div class="nss-tags">
+            <span><i class="fas fa-check-circle"></i> Community Development</span>
+            <span><i class="fas fa-check-circle"></i> Awareness Drives</span>
+            <span><i class="fas fa-check-circle"></i> Youth Engagement</span>
+            <span><i class="fas fa-check-circle"></i> Rural Development</span>
+            <span><i class="fas fa-check-circle"></i> Tree Plantation</span>
+            <span><i class="fas fa-check-circle"></i> Blood Donation Drives</span>
+            <span><i class="fas fa-check-circle"></i> Digital Literacy</span>
+            <span><i class="fas fa-check-circle"></i> Education Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-label">09. Education</span>
+        <h2 class="section-title">The Foundation</h2>
+        <p class="section-sub">Where theory met curiosity and the algorithm began.</p>
+      </div>
+      <div class="edu-timeline">
+
+        <div class="edu-item reveal-left" style="--delay:0s">
+          <div class="edu-year">2023 – Present</div>
+          <div class="edu-card surface-card">
+            <div class="edu-badge current">Current</div>
+            <h3>Lovely Professional University</h3>
+            <p class="edu-degree">B.Tech – Computer Science &amp; Engineering</p>
+            <div class="edu-meta">
+              <span class="cgpa"><i class="fas fa-star"></i> CGPA: 7.4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-item reveal-right" style="--delay:0s">
+          <div class="edu-year">2021 – 2023</div>
+          <div class="edu-card surface-card">
+            <h3>SR Educational Academy</h3>
+            <p class="edu-degree">Intermediate – PCM</p>
+            <div class="edu-meta">
+              <span class="cgpa"><i class="fas fa-star"></i> 89%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-item reveal-left" style="--delay:0s">
+          <div class="edu-year">2016 – 2021</div>
+          <div class="edu-card surface-card">
+            <h3>Red Cherries School</h3>
+            <p class="edu-degree">10th Standard</p>
+            <div class="edu-meta">
+              <span class="cgpa"><i class="fas fa-star"></i> 98%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-sub">Currently open to internships, research roles, and professional collaborations. My inbox is always open.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="contact-item surface-card" style="padding: 20px; border-radius: 16px; margin-bottom: 20px; width: 100%;">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <span class="ci-label">Email</span>
+              <a href="mailto:deepthidesetty22@gmail.com" class="ci-value">deepthidesetty22@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item surface-card" style="padding: 20px; border-radius: 16px; margin-bottom: 20px; width: 100%;">
+            <div class="ci-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <span class="ci-label">Phone</span>
+              <span class="ci-value">+91-9392951537</span>
+            </div>
+          </div>
+          <div class="contact-item surface-card" style="padding: 20px; border-radius: 16px; margin-bottom: 20px; width: 100%;">
+            <div class="ci-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <span class="ci-label">GitHub</span>
+              <a href="https://github.com/Deepthi006" target="_blank" class="ci-value">github.com/Deepthi006</a>
+            </div>
+          </div>
+          <div class="contact-item surface-card" style="padding: 20px; border-radius: 16px; margin-bottom: 20px; width: 100%;">
+            <div class="ci-icon"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <span class="ci-label">LinkedIn</span>
+              <a href="https://linkedin.com/in/deepthi99" target="_blank" class="ci-value">linkedin.com/in/deepthi99</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form surface-card reveal-right" id="contactForm" novalidate>
+          <input type="hidden" name="_subject" value="New Portfolio Message!">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i> <span id="formSuccessText">Message sent successfully!</span>
+          </div>
+          <div class="form-error" id="formError">
+            <i class="fas fa-exclamation-circle"></i> <span id="formErrorText">Something went wrong. Please try again.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="logo footer-logo">
+        <span class="logo-bracket">&lt;</span>DD<span class="logo-bracket">/&gt;</span>
+      </a>
+      <p>Designed &amp; Built by <strong>Deepthi Desetty</strong></p>
+      <p class="footer-copy">© 2026 All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ===== CHATBOT WIDGET ===== -->
+  <div class="chatbot-fab" id="chatbotFab" title="Ask me anything!">
+    <i class="fas fa-comment-dots" id="chatFabIcon"></i>
+    <span class="chat-notify-dot"></span>
+  </div>
+
+  <div class="chatbot-panel" id="chatbotPanel">
+    <div class="chat-header">
+      <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+      <div class="chat-header-info">
+        <span class="chat-name">DD — AI Assistant</span>
+        <span class="chat-status"><span class="chat-online-dot"></span> Online</span>
+      </div>
+      <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="msg-bubble">
+          👋 Hi! I'm Deepthi's AI assistant. Ask me anything about her skills, projects, internship, education, or how to get in touch!
+        </div>
+      </div>
+      <div class="chat-quick-replies" id="quickReplies">
+        <button class="qr-btn" data-q="What are her skills?">💡 Skills</button>
+        <button class="qr-btn" data-q="Tell me about her projects">🚀 Projects</button>
+        <button class="qr-btn" data-q="What is her education background?">🎓 Education</button>
+        <button class="qr-btn" data-q="Tell me about her internship">💼 Internship</button>
+        <button class="qr-btn" data-q="How can I contact her?">📬 Contact</button>
+      </div>
+    </div>
+    <div class="chat-typing" id="chatTyping" style="display:none;">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Ask me anything…" autocomplete="off">
+      <button class="chat-send" id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script src="/static/script.js?v=18"></script>
+</body>
+</html>
