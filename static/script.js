@@ -571,7 +571,7 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({ name, email, message, _subject: "New Portfolio Message from " + name })
+        body: JSON.stringify({ name, email, message, _subject: "New Portfolio Message" })
       });
       const data = await res.json();
 
@@ -1021,9 +1021,9 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
 })();
 
 // ================================================================
-// 27. CUSTOM BACKGROUND: DEEPTHI & BINARY DROPPING
+// 27. CUSTOM BACKGROUND: CYBER CIRCUIT (Slow, Clear Tech Look)
 // ================================================================
-(function initMatrixRain() {
+(function initCyberRain() {
   const canvas = document.getElementById('matrix-bg');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -1032,43 +1032,97 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
   function resize() {
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
+    initDrops();
   }
+  
+  // Custom characters requested in the screenshot
+  const chars = '01A'.split('');
+  const fontSize = 16;
+  let columns;
+  let drops = [];
+  
+  function initDrops() {
+      columns = Math.floor(w / fontSize);
+      drops = [];
+      for (let i = 0; i < columns; i++) {
+        // Less than 5% density to guarantee it is NEVER messy and looks like clean data streams
+        if (Math.random() > 0.95) {
+            drops[i] = { 
+              y: Math.random() * -100, 
+              speed: Math.random() * 0.3 + 0.1, // Ultra slow motion
+              char: chars[Math.floor(Math.random() * chars.length)] 
+            };
+        } else {
+            drops[i] = null;
+        }
+      }
+  }
+  
   resize();
   window.addEventListener('resize', resize);
   
-  // Custom characters: "DEEPTHI" + binary representations
-  // deepthi binary: 01100100 01100101 01100101 01110000 01110100 01101000 01101001
-  const chars = 'DEEPTHI01010011'.split('');
-  
-  const fontSize = 16;
-  let columns = w / fontSize;
-  let drops = [];
-  for (let i = 0; i < columns; i++) {
-    drops[i] = Math.random() * -100; // random start out of view
-  }
-  
   function draw() {
-    // Fill with semi-transparent black to create a fading trail
-    ctx.fillStyle = 'rgba(5, 11, 24, 0.15)'; // Higher alpha = faster fade = shorter tails = less mess
+    // Clean fade to keep the screen sharp and clear of messy trails
+    ctx.fillStyle = 'rgba(10, 20, 45, 0.4)'; 
     ctx.fillRect(0, 0, w, h);
     
-    // Cyan color matching the theme
-    ctx.fillStyle = '#06d6fa'; 
+    // Draw very faint glowing circuit rectangles in the background for a modern tech feel
+    ctx.strokeStyle = 'rgba(6, 214, 250, 0.02)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for(let i=100; i<w; i+=300) { ctx.rect(i, 100, 150, 80); }
+    for(let i=250; i<w; i+=400) { ctx.rect(i, 400, 180, 60); }
+    ctx.stroke();
+
     ctx.font = fontSize + 'px monospace';
     ctx.textAlign = 'center';
     
-    for (let i = 0; i < drops.length; i++) {
-      const text = chars[Math.floor(Math.random() * chars.length)];
-      ctx.fillText(text, i * fontSize + fontSize/2, drops[i] * fontSize);
-      
-      // Reset drop to top randomly
-      if (drops[i] * fontSize > h && Math.random() > 0.975) {
-        drops[i] = 0;
+    for (let i = 0; i < columns; i++) {
+      let drop = drops[i];
+      if (drop) {
+          // Draw connecting dot above the drop (like a circuit node)
+          ctx.fillStyle = 'rgba(6, 214, 250, 0.6)';
+          ctx.beginPath();
+          ctx.arc(i * fontSize + fontSize/2, drop.y * fontSize - 20, 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Draw thin circuitry line down to the character
+          ctx.strokeStyle = 'rgba(6, 214, 250, 0.2)';
+          ctx.beginPath();
+          ctx.moveTo(i * fontSize + fontSize/2, drop.y * fontSize - 20);
+          ctx.lineTo(i * fontSize + fontSize/2, drop.y * fontSize - 5);
+          ctx.stroke();
+
+          // Draw the actual character glowing brightly
+          ctx.fillStyle = '#06d6fa';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#06d6fa';
+          ctx.fillText(drop.char, i * fontSize + fontSize/2, drop.y * fontSize);
+          ctx.shadowBlur = 0; // Reset shadow so background doesn't glow
+          
+          drop.y += drop.speed; // Move down slowly
+          
+          // Randomly fluctuate character like real data computing
+          if (Math.random() > 0.99) drop.char = chars[Math.floor(Math.random() * chars.length)];
+
+          // Extremely slow and sparse respawn
+          if (drop.y * fontSize > h && Math.random() > 0.98) {
+            drop.y = -10;
+            drop.speed = Math.random() * 0.3 + 0.1;
+          }
+      } else {
+          // Extremely rare chance for an empty column to spawn a new data stream
+          if (Math.random() > 0.9995) {
+              drops[i] = { 
+                y: -10, 
+                speed: Math.random() * 0.3 + 0.1, 
+                char: chars[Math.floor(Math.random() * chars.length)] 
+              };
+          }
       }
-      // varying the drop speed slightly
-      drops[i] += 0.85; 
     }
   }
   
-  setInterval(draw, 50); // Slower interval
+  // Consistent smooth refresh for the slow motion aesthetic
+  setInterval(draw, 40); 
 })();
