@@ -66,9 +66,10 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
 
 
 // ================================================================
-// 3. THREE.JS HERO 3D SCENE
+// 3. THREE.JS HERO 3D SCENE (Disabled as requested to remove shapes)
 // ================================================================
 (function initHero3D() {
+  return; // Disabled to show only the binary bits in the background without any spheres/shapes
   const canvas = document.getElementById('hero-3d-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
@@ -174,7 +175,7 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
   let t = 0;
   function animate() {
     requestAnimationFrame(animate);
-    t += 0.005;
+    t += 0.002;
 
     nodesMesh.rotation.y = t * 0.13 + mouseX * 0.35;
     nodesMesh.rotation.x = t * 0.07 + mouseY * 0.22;
@@ -184,8 +185,8 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
     pLight.position.x    = Math.sin(t * 0.8) * 10;
     pLight.position.y    = Math.cos(t * 0.5) * 8;
 
-    camera.position.x += (mouseX * 3 - camera.position.x) * 0.035;
-    camera.position.y += (-mouseY * 2 - camera.position.y) * 0.035;
+    camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
+    camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
@@ -195,36 +196,9 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
 
 
 // ================================================================
-// 4. PARTICLES.JS BACKGROUND
+// 4. PARTICLES.JS BACKGROUND (Removed as per request)
 // ================================================================
-(function initParticles() {
-  if (typeof particlesJS === 'undefined') return;
-  // Create container if needed
-  let pc = document.getElementById('particles-js');
-  if (!pc) {
-    pc = document.createElement('div');
-    pc.id = 'particles-js';
-    pc.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;';
-    document.body.prepend(pc);
-  }
-  particlesJS('particles-js', {
-    particles: {
-      number: { value: 55, density: { enable: true, value_area: 1100 } },
-      color: { value: ['#00d4ff', '#7c3aed', '#10e8a0'] },
-      shape: { type: 'circle' },
-      opacity: { value: 0.22, random: true, anim: { enable: true, speed: 0.7, opacity_min: 0.04, sync: false } },
-      size: { value: 2.4, random: true },
-      line_linked: { enable: true, distance: 145, color: '#6366f1', opacity: 0.07, width: 1 },
-      move: { enable: true, speed: 0.75, direction: 'none', random: true, out_mode: 'out' }
-    },
-    interactivity: {
-      detect_on: 'canvas',
-      events: { onhover: { enable: true, mode: 'grab' }, resize: true },
-      modes: { grab: { distance: 210, line_linked: { opacity: 0.28 } } }
-    },
-    retina_detect: true
-  });
-})();
+// (function initParticles() { ... })();
 
 
 // ================================================================
@@ -495,7 +469,7 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
     { html: '    self<span class="t-op">.</span>role     <span class="t-op">=</span> <span class="t-str">"AI/ML Engineer"</span>' },
     { html: '    self<span class="t-op">.</span>skills   <span class="t-op">=</span> [<span class="t-str">"TensorFlow"</span>, <span class="t-str">"PyTorch"</span>, <span class="t-str">"NLP"</span>]' },
     { html: '    self<span class="t-op">.</span>passion  <span class="t-op">=</span> <span class="t-str">"Artificial Intelligence"</span>' },
-    { html: '    self<span class="t-op">.</span>problems <span class="t-op">=</span> <span class="t-num">250</span><span class="t-str">+" DSA solved"</span>' },
+    { html: '    self<span class="t-op">.</span>problems <span class="t-op">=</span> <span class="t-num">150</span><span class="t-str">+"+ LeetCode & HackerRank"</span>' },
     { html: '  <span class="t-kw">def</span> <span class="t-fn">build</span>(self)<span class="t-op">:</span> <span class="t-kw">return</span> <span class="t-str">"🚀 Intelligent Systems"</span>' },
   ];
 
@@ -640,12 +614,12 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
       ans: '📬 **Connect with Deepthi!**\n\n✉️ deepthidesetty22@gmail.com\n📞 +91-9392951537\n💼 linkedin.com/in/deepthi99\n🐙 github.com/Deepthi006\n\nShe is **actively open to opportunities** — internships, full-time roles, and collaborations! 🚀'
     },
     {
-      keys: ['volunteer','nss','community','social','service','rural','camp','help'],
-      ans: '🌱 **NSS Volunteer at LPU**\n\n• 🌳 Tree plantation drives\n• 🩸 Blood donation awareness\n• 📱 Digital literacy programs\n• 🏘️ Rural development camps\n• 📖 Education support for underprivileged youth\n\nGrowth means lifting others along the way! 💚'
+      keys: ['volunteer','community','social','service','rural','camp','help'],
+      ans: '🌱 **Volunteer at LPU**\n\n• 🌳 Tree plantation drives\n• 🩸 Blood donation awareness\n• 📱 Digital literacy programs\n• 🏘️ Rural development camps\n• 📖 Education support for underprivileged youth\n\nGrowth means lifting others along the way! 💚'
     },
     {
-      keys: ['achievement','dsa','problem','leetcode','geeksforgeeks','solve','competitive','coding','250'],
-      ans: '🏅 **Deepthi\'s Scoreboard:**\n\n🔢 **250+ DSA problems** on LeetCode & GeeksforGeeks\n🤖 **5+ AI/ML projects** built & deployed\n🏆 **6+ certifications** from top platforms\n\nStrong problem-solving + practical AI skills = 🔥'
+      keys: ['achievement','dsa','problem','leetcode','hackerrank','solve','competitive','coding','150'],
+      ans: '🏅 **Deepthi\'s Scoreboard:**\n\n🔢 **150+ problems** on LeetCode & HackerRank\n🤖 **5+ AI/ML projects** built & deployed\n🏆 **3+ certifications & training** from top platforms\n\nStrong problem-solving + practical AI skills = 🔥'
     },
     {
       keys: ['soft skill','communication','leadership','team','adapt','manage','creative','critical thinking'],
@@ -677,7 +651,7 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
     },
     {
       keys: ['who','about','deepthi','yourself','tell me','introduce','background','profile'],
-      ans: '🤖 **Deepthi Desetty** is an AI/ML Engineer from India, currently pursuing **B.Tech CSE at Lovely Professional University**.\n\nPassionate about **Deep Learning, NLP & intelligent systems** with **5+ projects, 6+ certifications**, and **250+ DSA problems** solved.\n\n📍 India | Open to opportunities worldwide 🌍'
+      ans: '🤖 **Deepthi Desetty** is an AI/ML Engineer from India, currently pursuing **B.Tech CSE at Lovely Professional University**.\n\nPassionate about **Deep Learning, NLP & intelligent systems** with **5+ projects, 3+ certifications**, and **150+ problems** solved on LeetCode & HackerRank.\n\n📍 India | Open to opportunities worldwide 🌍'
     },
   ];
 
@@ -1021,7 +995,7 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
 })();
 
 // ================================================================
-// 27. CUSTOM BACKGROUND: CYBER CIRCUIT (Slow, Clear Tech Look)
+// 27. CUSTOM BACKGROUND: CYBER CIRCUIT (Fluid, Slow Motion Tech Look)
 // ================================================================
 (function initCyberRain() {
   const canvas = document.getElementById('matrix-bg');
@@ -1035,9 +1009,10 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
     initDrops();
   }
   
-  // Custom characters requested in the screenshot
-  const chars = '01A'.split('');
+  // Custom characters: purely 0 and 1
+  const chars = '01'.split('');
   const fontSize = 16;
+  const colors = ['#06d6fa', '#10e8a0', '#7c3aed']; // Teal, Green, Purple
   let columns;
   let drops = [];
   
@@ -1049,8 +1024,9 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
         if (Math.random() > 0.95) {
             drops[i] = { 
               y: Math.random() * -100, 
-              speed: Math.random() * 0.3 + 0.1, // Ultra slow motion
-              char: chars[Math.floor(Math.random() * chars.length)] 
+              speed: Math.random() * 0.12 + 0.04, // Ultra slow motion
+              char: chars[Math.floor(Math.random() * chars.length)],
+              color: colors[Math.floor(Math.random() * colors.length)]
             };
         } else {
             drops[i] = null;
@@ -1063,16 +1039,10 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
   
   function draw() {
     // Clean fade to keep the screen sharp and clear of messy trails
-    ctx.fillStyle = 'rgba(10, 20, 45, 0.4)'; 
+    ctx.fillStyle = 'rgba(10, 20, 45, 0.15)'; 
     ctx.fillRect(0, 0, w, h);
     
-    // Draw very faint glowing circuit rectangles in the background for a modern tech feel
-    ctx.strokeStyle = 'rgba(6, 214, 250, 0.02)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for(let i=100; i<w; i+=300) { ctx.rect(i, 100, 150, 80); }
-    for(let i=250; i<w; i+=400) { ctx.rect(i, 400, 180, 60); }
-    ctx.stroke();
+    // NO SHAPES: Removed circuit rectangles and circles as requested.
 
     ctx.font = fontSize + 'px monospace';
     ctx.textAlign = 'center';
@@ -1080,23 +1050,17 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
     for (let i = 0; i < columns; i++) {
       let drop = drops[i];
       if (drop) {
-          // Draw connecting dot above the drop (like a circuit node)
-          ctx.fillStyle = 'rgba(6, 214, 250, 0.6)';
-          ctx.beginPath();
-          ctx.arc(i * fontSize + fontSize/2, drop.y * fontSize - 20, 2, 0, Math.PI * 2);
-          ctx.fill();
-
           // Draw thin circuitry line down to the character
-          ctx.strokeStyle = 'rgba(6, 214, 250, 0.2)';
+          ctx.strokeStyle = 'rgba(6, 214, 250, 0.1)';
           ctx.beginPath();
           ctx.moveTo(i * fontSize + fontSize/2, drop.y * fontSize - 20);
           ctx.lineTo(i * fontSize + fontSize/2, drop.y * fontSize - 5);
           ctx.stroke();
 
           // Draw the actual character glowing brightly
-          ctx.fillStyle = '#06d6fa';
+          ctx.fillStyle = drop.color;
           ctx.shadowBlur = 10;
-          ctx.shadowColor = '#06d6fa';
+          ctx.shadowColor = drop.color;
           ctx.fillText(drop.char, i * fontSize + fontSize/2, drop.y * fontSize);
           ctx.shadowBlur = 0; // Reset shadow so background doesn't glow
           
@@ -1108,21 +1072,52 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
           // Extremely slow and sparse respawn
           if (drop.y * fontSize > h && Math.random() > 0.98) {
             drop.y = -10;
-            drop.speed = Math.random() * 0.3 + 0.1;
+            drop.speed = Math.random() * 0.12 + 0.04;
+            drop.color = colors[Math.floor(Math.random() * colors.length)];
           }
       } else {
           // Extremely rare chance for an empty column to spawn a new data stream
           if (Math.random() > 0.9995) {
               drops[i] = { 
                 y: -10, 
-                speed: Math.random() * 0.3 + 0.1, 
-                char: chars[Math.floor(Math.random() * chars.length)] 
+                speed: Math.random() * 0.12 + 0.04, 
+                char: chars[Math.floor(Math.random() * chars.length)],
+                color: colors[Math.floor(Math.random() * colors.length)]
               };
           }
       }
     }
+    requestAnimationFrame(draw);
   }
   
-  // Consistent smooth refresh for the slow motion aesthetic
-  setInterval(draw, 40); 
+  // Start fluid and smooth refresh for the slow motion aesthetic
+  requestAnimationFrame(draw);
 })();
+
+// ================================================================
+// PDF MODAL LOGIC
+// ================================================================
+const pdfModal = document.getElementById('pdfModal');
+const pdfFrame = document.getElementById('pdfFrame');
+const pdfModalClose = document.getElementById('pdfModalClose');
+
+window.openPdfModal = function(pdfUrl) {
+  if (pdfModal && pdfFrame) {
+    pdfFrame.src = pdfUrl;
+    pdfModal.style.display = 'flex';
+    // slightly delay adding active class for CSS transition to trigger
+    setTimeout(() => {
+      pdfModal.classList.add('active');
+    }, 10);
+  }
+};
+
+if (pdfModalClose) {
+  pdfModalClose.addEventListener('click', () => {
+    pdfModal.classList.remove('active');
+    setTimeout(() => { 
+      pdfModal.style.display = 'none';
+      pdfFrame.src = ''; 
+    }, 300); // clear after animation
+  });
+}
