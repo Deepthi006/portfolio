@@ -594,12 +594,12 @@ $$('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
       ans: '🤖 Deepthi is deeply into AI/ML! She works with **TensorFlow & PyTorch** for deep learning, uses **BERT & transformers** for NLP, and has experience with **LLMs & GenAI**. She has built models for sentiment analysis, fraud detection, stock prediction, and crop disease classification!'
     },
     {
-      keys: ['project','built','app','system','stock','fraud','fake news','peaceful','crop','disease','predict','portfolio'],
-      ans: '🚀 Deepthi has built **5+ AI/ML projects**:\n\n📈 **Stock Prediction App** – LSTM + ARIMA + React.js + Django\n🛡️ **Fraud Detection System** – Random Forest + Logistic Regression\n📰 **Fake News Detector** – BERT + TF-IDF NLP classifier\n🧘 **Peaceful Mind App** – Sentiment AI mental health companion\n🌿 **Crop Disease Predictor** – CNN + OpenCV + TensorFlow\n\nAll deployed end-to-end! 💪'
+      keys: ['project','built','app','system','she-shield','she shield','safety','stock','fraud','fake news','peaceful','crop','disease','predict','portfolio'],
+      ans: '🚀 Deepthi has built **6+ AI/ML projects**:\n\n🛡️ **She-Shield – AI Safety Detection System** – YOLO + OpenCV + TensorFlow + Scikit-learn\n🌿 **Crop Disease Predictor** – CNN + OpenCV + TensorFlow\n🛡️ **Fraud Detection System** – Random Forest + Logistic Regression\n📰 **Fake News Detector** – BERT + TF-IDF NLP classifier\n📈 **Stock Prediction App** – LSTM + ARIMA + React.js + Django\n🧘 **Peaceful Mind App** – Sentiment AI mental health companion\n\nAll deployed end-to-end! 💪'
     },
     {
-      keys: ['internship','experience','company','internselite','professional','industry','work experience'],
-      ans: '💼 **Internselite Pvt Ltd** (Oct – Dec 2024)\n\n• Built serverless apps on **AWS** (API Gateway, Lambda, DynamoDB)\n• Optimised trees, graphs, heaps & dynamic programming algorithms\n• Applied advanced **C++ STL** features on real-world projects\n• Focused on time/space complexity and scalable architecture'
+      keys: ['internship','experience','company','outlier','outlier ai','freelance','internselite','professional','industry','work experience','rlhf','prompt engineering'],
+      ans: '💼 **Work Experience & Internships:**\n\n🤖 **Outlier AI** — *Freelance Contributor* (Nov 2025 – Jan 2026)\n• Evaluated state-of-the-art AI models to improve **RLHF**\n• Applied advanced **prompt engineering** across text & visual tasks in Python & Java\n• Contributed **200+ hours**, $1,200+ earned with a **4.5+ client rating**!\n\n🏢 **Internselite Pvt Ltd** — *C/C++ & DSA Intern* (Oct – Dec 2024)\n• Built serverless modules on **AWS** (API Gateway, Lambda, DynamoDB)\n• Optimized complex trees, graphs & dynamic programming algorithms'
     },
     {
       keys: ['education','degree','study','university','lpu','lovely professional','school','cgpa','grade','10th','intermediate','marks','academic'],
